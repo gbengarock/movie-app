@@ -1,4 +1,44 @@
+
+# Build settings
+[build]
+  command = "npm run build"   # The build command for your project
+  publish = "build"          # The directory to deploy as the built site
+
+# Environment variables
+[build.environment]
+  REACT_APP_API_KEY = "your-api-key"  # Example environment variable
+
+# Asset optimization (optional)
+[build.processing]
+  # Optimize images during build
+  # images = true
+
+# Redirects and rewrites (optional)
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers (optional)
+[[headers]]
+  # Define custom headers
+  for = "/*"
+    [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Plugins (optional)
+# [plugins]
+#   # Enable Netlify plugins if needed
+#   # Example: "netlify-plugin-sitemap" = { active = true, package = "netlify-plugin-sitemap" }
+
+# Notifications (optional)
+# [notifications]
+#   # Configure build notifications if desired
+#   # Example: "slack" = { active = true }
+
+# Context-specific configurations (optional)
+[context.production]
+  command = "npm run start"   # Override build command for production
+
+[context.deploy-preview]
+  command = "npm run build"   # Override build command for deploy previews
