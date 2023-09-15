@@ -3,14 +3,15 @@ import description from '../assets/description.png';
 import MovieCard from '../components/Card';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-import config from '../config';
+
 
 const Homepage = () => {
 
     const [movieList, setMovieList] = useState('');
-    console.log(config.API_KEY);
+    const MY_API_KEY = process.env.REACT_APP_API_KEY;
+    
     const getMovie = () =>{
-      fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${config.API_KEY}`)
+      fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${MY_API_KEY}`)
       .then(res => res.json())
       .then(json => setMovieList(json.results))
       .catch(err => console.log(err))

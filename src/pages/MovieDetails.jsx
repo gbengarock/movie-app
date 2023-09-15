@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SideNav from '../components/SideNav';
-import config from '../config';
 
 function MovieDetails() {
   
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  
+  const MY_API_KEY = process.env.REACT_APP_API_KEY
   // Function to update screen width in state
   const updateScreenWidth = () => {
     setScreenWidth(window.innerWidth);
@@ -26,7 +25,7 @@ function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
 
   useEffect(() => {
-   fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${config.API_KEY}`)
+   fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${MY_API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         setMovieDetails(data);
@@ -47,7 +46,7 @@ function MovieDetails() {
       <SideNav />
       <div>
       <video className='w-full h-[300px]' controls>
-        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${config.API_KEY}`} type='video/mp4' />
+        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${MY_API_KEY}`} type='video/mp4' />
       </video>
       <div className=''>
         <li className='flex'>
@@ -62,7 +61,7 @@ function MovieDetails() {
     </div>) : (
       <div className='mx-5 my-3'>
       <video className='w-full h-[300px]' controls>
-        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${config.API_KEY}`} type='video/mp4' />
+        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${MY_API_KEY}`} type='video/mp4' />
       </video>
       <div className='mt-3'>
         <li className='flex'>

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import config from '../config';
 
 function MovieSearch() {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const MY_API_KEY = process.env.REACT_APP_API_KEY;
+
   const handleSearch = async () => {
     setIsLoading(true);
 
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${config.API_KEY}&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${MY_API_KEY}&query=${query}`
       );
 
       if (!response.ok) {
