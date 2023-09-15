@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-// import Axios from 'axios';
 import description from '../assets/description.png';
 import MovieCard from '../components/Card';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
+import config from '../config';
 
 const Homepage = () => {
 
     const [movieList, setMovieList] = useState('');
-
+    console.log(config.API_KEY);
     const getMovie = () =>{
-      fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=85b4fee57de5758c4689a1f67d8ee0c5")
+      fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${config.API_KEY}`)
       .then(res => res.json())
       .then(json => setMovieList(json.results))
       .catch(err => console.log(err))

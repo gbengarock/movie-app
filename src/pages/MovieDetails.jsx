@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SideNav from '../components/SideNav';
+import config from '../config';
 
 function MovieDetails() {
   
@@ -25,7 +26,7 @@ function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
 
   useEffect(() => {
-   fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=85b4fee57de5758c4689a1f67d8ee0c5`)
+   fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${config.API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         setMovieDetails(data);
@@ -46,7 +47,7 @@ function MovieDetails() {
       <SideNav />
       <div>
       <video className='w-full h-[300px]' controls>
-        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=85b4fee57de5758c4689a1f67d8ee0c5`} type='video/mp4' />
+        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${config.API_KEY}`} type='video/mp4' />
       </video>
       <div className=''>
         <li className='flex'>
@@ -61,7 +62,7 @@ function MovieDetails() {
     </div>) : (
       <div className='mx-5 my-3'>
       <video className='w-full h-[300px]' controls>
-        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=85b4fee57de5758c4689a1f67d8ee0c5`} type='video/mp4' />
+        <source src={`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${config.API_KEY}`} type='video/mp4' />
       </video>
       <div className='mt-3'>
         <li className='flex'>

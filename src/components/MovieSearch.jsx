@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import config from '../config';
 
 function MovieSearch() {
   const [query, setQuery] = useState('');
@@ -11,7 +12,7 @@ function MovieSearch() {
 
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=85b4fee57de5758c4689a1f67d8ee0c5&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${config.API_KEY}&query=${query}`
       );
 
       if (!response.ok) {
