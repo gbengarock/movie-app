@@ -3,8 +3,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "build", // Path to your build directory
-      "use": "@vercel/static-build" // Builder for React apps
+      "src": "build", 
+      "use": "@vercel/static-build" 
     }
   ],
   "routes": [
@@ -14,8 +14,8 @@
     }
   ],
   "env": {
-    "REACT_APP_API_KEY": "@my-secret-api-key"
-    // Add other environment variables here if needed
+    "REACT_APP_API_KEY": "@my_secret_api_key"
+    
   },
   "public": true
 }
